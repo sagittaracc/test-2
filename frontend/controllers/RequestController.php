@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use Yii;
 use backend\models\Request;
 use frontend\models\RequestSearch;
 use yii\web\Controller;
@@ -86,7 +87,9 @@ class RequestController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', 'Your request has been successfully created.');
+                
+                return $this->goHome();
             }
         } else {
             $model->loadDefaultValues();
