@@ -18,6 +18,9 @@ use Yii;
  */
 class Request extends \yii\db\ActiveRecord
 {
+    const ACTIVE = 'active';
+    const RESOLVED = 'resolved';
+
     /**
      * {@inheritdoc}
      */

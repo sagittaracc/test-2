@@ -28,7 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id',
             'name',
             'email:email',
-            'status',
+            [
+                'attribute' => 'status',
+                'filter' => [Request::ACTIVE => Request::ACTIVE, Request::RESOLVED => Request::RESOLVED],
+                'contentOptions' => ['style' => 'width: 150px;'],
+            ],
             'message:ntext',
             'comment:ntext',
             'created_at',

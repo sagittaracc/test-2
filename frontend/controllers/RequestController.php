@@ -108,7 +108,7 @@ class RequestController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->status = 'resolved';
+        $model->status = Request::RESOLVED;
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
 
