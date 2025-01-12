@@ -6,6 +6,7 @@ use yii\rest\ActiveController;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
 use yii\filters\auth\HttpBasicAuth;
+use yii\filters\Cors;
 
 /**
  * Request controller
@@ -17,6 +18,13 @@ class RequestController extends ActiveController
     public function behaviors()
     {
         return [
+            [
+                'class' => Cors::class,
+                'cors' => [
+                    'Origin' => ['*'],
+                    'Access-Control-Request-Method' => ['GET', 'PUT'],
+                ],
+            ],
             [
                 'class' => ContentNegotiator::class,
                 'formats' => [
