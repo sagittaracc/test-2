@@ -111,9 +111,12 @@ class RequestController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->status = Request::RESOLVED;
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->status = Request::RESOLVED;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            if ($model->save()) {
+                $model->sendEmail();
+            }
 
             return $this->redirect(['view', 'id' => $model->id]);
         }

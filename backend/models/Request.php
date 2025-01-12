@@ -59,4 +59,14 @@ class Request extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    public function sendEmail()
+    {
+        return Yii::$app->mailer->compose()
+            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
+            ->setTo($this->email)
+            ->setSubject('Feedback')
+            ->setTextBody($this->comment)
+            ->send();
+    }
 }
