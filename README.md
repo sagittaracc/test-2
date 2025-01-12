@@ -24,35 +24,6 @@
 
 ## API
 
-Будет доступно по адресу `http://localhost:21080/requests`
+Будет доступно по адресу `http://localhost:21080/`
 
-- получение перечня заявок в системе (использует Basic Auth)
-
-```
-curl \
-  --location \
-  --request GET \
-  'http://localhost:21080/requests' \
-  --header 'Authorization: ******'
-```
-
-- создание заявки (доступно всем)
-
-```
-curl \
-  --location 'http://localhost:21080/requests' \
-  --header 'Content-Type: application/json' \
-  --data-raw '{"name": "sagy", "email": "sagy@local.ru", "message": "this is my message"}'
-```
-
-- обновление заявки (использует Basic Auth)
-
-```
-curl \
-  --location \
-  --request PUT \
-  'http://localhost:21080/requests/<id>' \
-  --header 'Content-Type: application/json' \
-  --header 'Authorization: *****' \
-  --data '{"comment": "ok", "status": "resolved"}'
-```
+Прочитать описание API можно по адресу `http://localhost:20080/docs`

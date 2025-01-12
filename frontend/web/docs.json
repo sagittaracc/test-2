@@ -1,0 +1,170 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Request API",
+        "version": "1.0"
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/requests": {
+            "get": {
+                "operationId": "RequestList",
+                "responses": {
+                    "200": {
+                        "description": "List all the requests",
+                        "schema": {
+                            "$ref": "#/definitions/requestList"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Basic Auth",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "CreateRequest",
+                "response": {
+                    "200": {
+                        "description": "Create a new request"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "value": "application/json",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ]
+            }
+        },
+        "/requests/{id}": {
+            "put": {
+                "operationId": "SetComment",
+                "responses": {
+                    "200": {
+                        "description": "Send the comment to a user request",
+                        "schema": {
+                            "$ref": "#/definitions/requestObject"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Basic Auth",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "value": "application/json",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "comment",
+                        "in": "body",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["active", "resolved"]
+                        }
+
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "requestList": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/requestObject"
+            }
+        },
+        "requestObject": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["active", "resolved"]
+                },
+                "message": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "comment": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}
