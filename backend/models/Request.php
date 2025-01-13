@@ -43,6 +43,17 @@ class Request extends \yii\db\ActiveRecord
         ];
     }
 
+    public function resolved()
+    {
+        if (empty($this->comment)) {
+            return false;
+        }
+
+        $this->status = self::RESOLVED;
+
+        return parent::save();
+    }
+
     /**
      * {@inheritdoc}
      */

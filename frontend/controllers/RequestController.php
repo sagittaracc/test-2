@@ -112,9 +112,7 @@ class RequestController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post())) {
-            $model->status = Request::RESOLVED;
-
-            if ($model->save()) {
+            if ($model->resolved()) {
                 $model->sendEmail();
             }
 
