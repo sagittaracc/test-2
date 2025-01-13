@@ -4,6 +4,8 @@
         "title": "Request API",
         "version": "1.0"
     },
+    "host": "localhost:21080",
+    "schemes": ["http"],
     "consumes": [
         "application/json"
     ],
