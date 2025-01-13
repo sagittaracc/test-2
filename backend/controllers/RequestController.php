@@ -22,7 +22,8 @@ class RequestController extends ActiveController
                 'class' => Cors::class,
                 'cors' => [
                     'Origin' => ['*'],
-                    'Access-Control-Request-Method' => ['GET', 'PUT'],
+                    'Access-Control-Request-Method' => ['GET', 'PUT', 'POST'],
+                    'Access-Control-Request-Headers' => ['Content-Type', 'Authorization'],
                 ],
             ],
             [

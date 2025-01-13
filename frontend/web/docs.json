@@ -52,25 +52,13 @@
                         "format": "string"
                     },
                     {
-                        "name": "name",
                         "in": "body",
+                        "name": "body",
+                        "description": "Raw post data",
                         "required": true,
-                        "type": "string",
-                        "format": "string"
-                    },
-                    {
-                        "name": "email",
-                        "in": "body",
-                        "required": true,
-                        "type": "string",
-                        "format": "email"
-                    },
-                    {
-                        "name": "message",
-                        "in": "body",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
+                        "schema": {
+                            "$ref": "#/definitions/newRequest"
+                        }
                     }
                 ]
             }
@@ -165,6 +153,27 @@
                 "updated_at": {
                     "type": "string",
                     "format": "date-time"
+                }
+            }
+        },
+        "newRequest": {
+            "required": [
+                "name",
+                "email",
+                "message"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "message": {
+                    "type": "string",
+                    "format": "string"
                 }
             }
         }
